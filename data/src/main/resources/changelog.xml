@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+    <changeSet author="zloy" id="1">
+        <comment>
+            add table debriefing_task
+        </comment>
+        <createTable tableName="debriefing_task">
+            <column autoIncrement="true" name="id" type="BIGSERIAL">
+                <constraints primaryKey="true" primaryKeyName="debriefingTask_pkey"/>
+            </column>
+            <column name="day" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="flight_number" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="flight_icao_code" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="work_type" type="int" defaultValue="0" >
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addUniqueConstraint tableName="debriefing_task" columnNames="day, flight_number, flight_icao_code"/>
+    </changeSet>
+
+
+
+</databaseChangeLog>
